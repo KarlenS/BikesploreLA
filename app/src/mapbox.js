@@ -12,7 +12,7 @@
 	module.exports = OSRMv1.extend({
 		options: {
 			serviceUrl: 'https://api.mapbox.com/directions/v5',
-			profile: 'mapbox/driving',
+			profile: 'mapbox/cycling',
 			useHints: false
 		},
 

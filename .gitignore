@@ -106,3 +106,4 @@ venv.bak/
 #custom
 app/_const.py
 .DS_Store
+*.swp
