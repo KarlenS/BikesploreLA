@@ -107,3 +107,4 @@ venv.bak/
 app/_const.py
 .DS_Store
 *.swp
+/Users/karlen/Work/Insight/BikesploreLA/app/static/config.js

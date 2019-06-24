@@ -6,7 +6,7 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 	attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-const key = ''; 
+const key = 'pk.eyJ1Ijoic2hrYXJsZW4iLCJhIjoiY2p3d20wM252MGxoazQzbjU4aHFoOWMybCJ9.kF_uQSONrElBOKGGDGMPmg';
 
 var bikerouter = L.Routing.mapbox(key)
 bikerouter.options.profile = 'mapbox/cycling';
@@ -33,7 +33,8 @@ var control = L.Routing.control({
     var routes = e.routes;//modify this shit on here!!!!
     
     socket.on('newroute', function(data) {
-        alert(data['msg']);
+        //alert(data['msg']);
+        
     });
     socket.emit('gotroute',JSON.stringify(routes));
     //post this??
