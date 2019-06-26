@@ -16820,7 +16820,7 @@ module.exports = L.Routing = {
 					distance: this._formatter.formatDistance(alt.summary.totalDistance, this.options.totalDistanceRoundingSensitivity),
 					time: this._formatter.formatTime(alt.summary.totalTime)
 				}, alt);
-			altDiv.innerHTML = typeof(template) === 'function' ? template(data) : L.Util.template(template, data);
+			//altDiv.innerHTML = typeof(template) === 'function' ? template(data) : L.Util.template(template, data);
 			L.DomEvent.addListener(altDiv, 'click', this._onAltClicked, this);
 			this.on('routeselected', this._selectAlt, this);
 
@@ -17871,7 +17871,7 @@ module.exports = L.Routing = {
 	module.exports = OSRMv1.extend({
 		options: {
 			serviceUrl: 'https://api.mapbox.com/directions/v5',
-			profile: 'mapbox/driving',
+			profile: 'mapbox/cycling',
 			useHints: false
 		},
 

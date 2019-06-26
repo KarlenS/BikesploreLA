@@ -1,3 +1,5 @@
+//adopted from https://github.com/lemartinet/cycle-safe
+
 // Loading required modules
 var L = require('./leaflet'),
     Router = require('./router'),
@@ -9,8 +11,10 @@ var L = require('./leaflet'),
     point = require('@turf/helpers').point,
     lineDistance = require('@turf/line-distance'),
     config = require('./config');
+    var Slider = require("bootstrap-slider");
+
 require('leaflet.icon.glyph');
-require('./dist/leaflet-routing-machine');
+require('./distr/leaflet-routing-machine');
 require('leaflet-control-geocoder');
 
 // Helper functions
@@ -64,7 +68,7 @@ xhr2.onload = function() {
         alert('Could not load sites network :( HTTP ' + xhr2.status);
     }
 };
-//xhr.open('GET', 'static/map1.geojson');
+
 xhr2.open('GET', 'static/sites.geojson');
 xhr2.send();
 
@@ -88,8 +92,8 @@ xhr.onload = function() {
         alert('Could not load routing network :( HTTP ' + xhr.status);
     }
 };
-//xhr.open('GET', 'static/map1.geojson');
-xhr.open('GET', 'static/acc_layer.geojson');
+
+xhr.open('GET', 'static/acc_layer2.geojson');
 xhr.send();
 
 function filter_sites(a, b, dlim){
@@ -102,13 +106,36 @@ function filter_sites(a, b, dlim){
     }
 }
 
-// Initialize the app with the downloaded network and add routing control object
+
 var control;
-// var top_risky = []; TODO find the top riskiest spot on the path
 
-
+var control_default;
 
 function initialize(network) {
+
+    //control_default = L.Routing.control({
+    //waypoints: [
+    //    L.latLng(34.066666, -118.410673),
+    //    L.latLng(34.055582, -118.38347)
+    //],
+    //geocoder: L.Control.Geocoder.nominatim(),
+    //routeWhileDragging: true,
+    //reverseWaypoints: true,
+    ////showAlternatives: true,
+    //altLineOptions: {
+    //    styles: [
+    //        {color: 'black', opacity: 0.15, weight: 9},
+    //        {color: 'white', opacity: 0.8, weight: 6},
+    //        {color: 'blue', opacity: 0.5, weight: 2}
+    //    ]
+    //},
+    //    router: L.Routing.mapbox(config.apiToken)
+    //}).on('routesfound', function(e) {
+    //  var routes2 = e.routes;
+    //  console.log(routes2[0].coordinates);
+    //}).addTo(map);
+
+
     
     var router = new Router(network); // Use our custom router using risk
     control = L.Routing.control({
@@ -131,19 +158,31 @@ function initialize(network) {
             var infoContainer = document.querySelector('.leaflet-testbox');
             var routes = e.routes;
 
-			infoContainer.innerHTML = '<button type="button" class="attactbutt btn btn-dark">Attractions</button>';
 
-            infoContainer.innerHTML += '<br> Distance: ' + (routes[0].summary.totalDistance/1000).toFixed(2) + ' km';
+            infoContainer.innerHTML = '<h2>Distance: ' + (routes[0].summary.totalDistance/1000).toFixed(2) + ' km </h2>';
+			infoContainer.innerHTML += ' <br> <button type="button" class="attractbutt btn btn-dark">Attractions</button>';
+            //infoContainer.innerHTML += ' <br> <button type="button" class="btn btn-danger">KillMe!</button> <br>';
 
-            if (L.alpha == 1) {
+
+            //if (L.alpha == 1) {
                 //infoContainer.innerHTML += '<br> Total Accident Risk: ' + routes[0].summary.totalTime.toFixed(2);
                 //infoContainer.innerHTML += '<br/>Time/Distance: ' + (1000*routes[0].summary.totalTime/routes[0].summary.totalDistance).toFixed(2);
                 //infoContainer.innerHTML += '<br/>Average Accident Chance: ' + (routes[0].summary.totalTime/routes[0].coordinates.length).toFixed(2);
                 infoContainer.innerHTML +=
                     '<p style="font-size: 16pt;"> Ride safe. Have fun. Don\'t die.</p>';
-            }
+            //}
 
-			const mybutton = $(".attactbutt");
+
+           // const alphabutt = $(".btn-danger");
+           // 
+           // alphabutt.on("click", function() {
+           //     L.alpha = 0;
+           //     update(net);
+           //     event.preventDefault();
+           // });
+
+
+			const mybutton = $(".attractbutt");
 
         	mybutton.on("click", function() {
 
@@ -151,6 +190,7 @@ function initialize(network) {
 
 				$( this ).removeClass('btn-dark').addClass('btn-info');
 			
+
 
 
             var wp1 = routes[0].inputWaypoints[0].latLng;
@@ -248,7 +288,7 @@ function initialize(network) {
         vertices = router._pathFinder._graph.sourceVertices,
         weights = router._pathFinder._graph.vertices,
         renderer = L.canvas().addTo(map);
-    nodeNames.forEach(function(nodeName) {
+        nodeNames.forEach(function(nodeName) {
         var node = graph[nodeName];
         Object.keys(node).forEach(function(neighbor) {
             var c1 = vertices[nodeName],
@@ -391,7 +431,23 @@ function update(network) {
     control.route({});
 }
 
-// Setup AJAX communication with the server
-// Experimental, not used for now
+window.onload = function() {
+    var poop = new Slider("#ex1", {
+	// initial options object
+    });
+    //var poop = $("#ex1");
+    //console.log(poop);
 
+
+    poop.on("change", function (e){
+    
+    var opt = e.newValue;
+
+    L.alpha = (opt - 1.)/2.; 
+    update(net);
+  // stop link from reloading the page
+    event.preventDefault();
+});
+
+}
 

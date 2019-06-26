@@ -21,3 +21,11 @@ html {
     height: 480px;
     overflow-y: scroll;
 }
+
+#sliderbox {
+    position: fixed;
+    top: 85px;
+    right: 100px;
+    z-index: 100;
+    display: inline-block;
+}
