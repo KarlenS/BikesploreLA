@@ -18697,7 +18697,7 @@ function toPoint2 (lng,lat) {
 // Creating the map object
 var map = L.map('map');
 
-
+var position;
 
 
 // Setting the map background to Mapbox
@@ -18816,9 +18816,13 @@ function initialize(network) {
             var routes = e.routes;
 
 
-            infoContainer.innerHTML = '<h2>Distance: ' + (routes[0].summary.totalDistance/1000).toFixed(2) + ' km </h2>';
-			infoContainer.innerHTML += ' <br> <button type="button" class="attractbutt btn btn-dark">Attractions</button>';
-            //infoContainer.innerHTML += ' <br> <button type="button" class="btn btn-danger">KillMe!</button> <br>';
+            infoContainer.innerHTML = '<h2>Distance: ' + (routes[0].summary.totalDistance/1000).toFixed(2) + ' km ';
+            //infoContainer.innerHTML += '<br> <br> <h2>Options:</h2>';
+			infoContainer.innerHTML += ' <button type="button" class="dirbutt btn btn-success">Get Directions</button> </h2>';
+			infoContainer.innerHTML += ' <br> <button type="button" class="attractbutt btn btn-dark">Show Attractions</button>';
+			//infoContainer.innerHTML +='<div class="checkbox"> <input id="chbox" type="checkbox" data-toggle="toggle" data-onstyle="info"> </div>';
+
+            //infoContainer.innerHTML += ' <button type="button" class="btn btn-danger">KillMe!</button>';
 
 
             //if (L.alpha == 1) {
@@ -18830,16 +18834,24 @@ function initialize(network) {
             //}
 
 
-           // const alphabutt = $(".btn-danger");
-           // 
-           // alphabutt.on("click", function() {
-           //     L.alpha = 0;
-           //     update(net);
-           //     event.preventDefault();
-           // });
+            const alphabutt = $(".dirbutt");
+            
+    
+            alphabutt.on("click", function() {
+                var poop = $("#ex1");
+                var opt = poop.attr('value');
+                L.alpha=opt*0.33;
+                update(net);
+                event.preventDefault();
+            });
 
 
 			const mybutton = $(".attractbutt");
+
+			const slidebox = $("#chbox");
+			slidebox.change(function() {
+				alert("BOOOM!")
+			});
 
         	mybutton.on("click", function() {
 
@@ -18848,6 +18860,7 @@ function initialize(network) {
 				$( this ).removeClass('btn-dark').addClass('btn-info');
 			
 
+				$ ( this ).html("Hide Attractions");
 
 
             var wp1 = routes[0].inputWaypoints[0].latLng;
@@ -18882,6 +18895,7 @@ function initialize(network) {
 			else {           
 
                 $( this ).removeClass('btn-info').addClass('btn-dark');
+				$ ( this ).html("Show Attractions");
 
 				var removeMarkers = function() {
 				    map.eachLayer( function(layer) {
@@ -18970,11 +18984,14 @@ function initialize(network) {
     // Set default start and end points when the user connects on the app
     // This triggers the search for a route right away
     control.setWaypoints([
+		//[position.coords.latitude,position.coords.longitude],
+		//[position.coords.latitude,position.coords.longitude],
 		[34.066666, -118.410673],
 		[34.055582, -118.383475],
     ]);
 
 }
+
 
 
 function onEachFeature(feature, layer) {
@@ -19089,25 +19106,47 @@ function update(network) {
 }
 
 window.onload = function() {
-    var poop = new Slider("#ex1", {
-	// initial options object
-    });
+control = L.Routing.control({});
+    
+	    position = {
+	      coords: {
+	        latitude: '',
+	        longitude: ''
+	      }
+	    };
+	
+	$.getJSON("http://ip-api.com/json", function (data, status) {
+
+		if(status === "success") {
+            if(data) {
+        position.coords.latitude = data.lat;
+        position.coords.longitude = data.lon;
+}
+}
+
+	});
+
+    //var poop = new Slider("#ex1", {
+    //});
     //var poop = $("#ex1");
     //console.log(poop);
 
 
-    poop.on("change", function (e){
+    //poop.on("change", function (e){
     
-    var opt = e.newValue;
+    //var opt = e.newValue;
 
-    L.alpha = (opt - 1.)/2.; 
-    update(net);
+    //L.alpha = opt*0.33; 
+    //update(net);
   // stop link from reloading the page
-    event.preventDefault();
-});
+    //event.preventDefault();
+//});
 
 }
 
+function setStartWaypoint(position) {
+    alert(position.coords.latitude,position.coords.longitude)
+}
 
 },{"./config":1,"./distr/leaflet-routing-machine":2,"./leaflet":4,"./router":5,"./util":6,"@turf/distance":7,"@turf/helpers":13,"@turf/line-distance":14,"@turf/nearest":19,"bootstrap-slider":23,"gauge-progress":28,"leaflet-control-geocoder":91,"leaflet.icon.glyph":93,"turf-extent":94}],4:[function(require,module,exports){
 /* @preserve
