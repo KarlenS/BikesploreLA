@@ -18816,9 +18816,9 @@ function initialize(network) {
             var routes = e.routes;
 
 
-            infoContainer.innerHTML = '<h2>Distance: ' + (routes[0].summary.totalDistance/1000).toFixed(2) + ' km ';
+            infoContainer.innerHTML = '<h2>Distance: ' + (routes[0].summary.totalDistance/1000).toFixed(2) + ' km </h2>';
             //infoContainer.innerHTML += '<br> <br> <h2>Options:</h2>';
-			infoContainer.innerHTML += ' <button type="button" class="dirbutt btn btn-success">Get Directions</button> </h2>';
+			infoContainer.innerHTML += ' <button type="button" class="dirbutt btn btn-success">Get Directions</button>';
 			infoContainer.innerHTML += ' <br> <button type="button" class="attractbutt btn btn-dark">Show Attractions</button>';
 			//infoContainer.innerHTML +='<div class="checkbox"> <input id="chbox" type="checkbox" data-toggle="toggle" data-onstyle="info"> </div>';
 
@@ -18831,6 +18831,8 @@ function initialize(network) {
                 //infoContainer.innerHTML += '<br/>Average Accident Chance: ' + (routes[0].summary.totalTime/routes[0].coordinates.length).toFixed(2);
                 infoContainer.innerHTML +=
                     '<p style="font-size: 16pt;"> Ride safe. Have fun. Don\'t die.</p>';
+
+                 infoContainer.innerHTML += '<p style="font-size: 12pt; color:red;"> <u>Note</u>: not available east of Beverly Hills.</p>';
             //}
 
 
