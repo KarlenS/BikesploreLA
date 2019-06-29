@@ -5,7 +5,7 @@ html {
 
 .map {
     position: fixed;
-    top: 0;
+    top: 8%;
     left: 0;
     right: 0;
     bottom: 0;
@@ -24,7 +24,7 @@ html {
 
 #sliderbox {
     position: fixed;
-    top: 85px;
+    top: 23vh;
     right: 100px;
     z-index: 90;
     display: inline-block;
@@ -42,6 +42,7 @@ html {
 }
 
 #land button{
+    height: auto;
     position: absolute;
     display: inline-block;
     top: 40vh;
