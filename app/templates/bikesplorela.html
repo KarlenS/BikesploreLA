@@ -31,7 +31,7 @@
     <div id="land">
 
         <img src="static/la2.jpg"> </img>
-        <button type="button" class="disbutt btn-lg btn btn-primary">Get Started</button>
+        <button style="visibility:hidden;" type="button" id="disbutt" class="disbutt btn-lg btn btn-primary">Get Started</button>
 
     </div>
 
@@ -55,6 +55,10 @@
         $(".disbutt").on("click",function hideLA(){
             $("#land").css('display','none');
         });
+
+        setTimeout(function(){
+        document.getElementById('disbutt').style.visibility = "visible";
+        },1000);
     </script>
 </body>
 </html>
