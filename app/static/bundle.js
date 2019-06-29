@@ -18816,7 +18816,7 @@ function initialize(network) {
             var routes = e.routes;
 
 
-            infoContainer.innerHTML = '<h2>Distance: ' + (routes[0].summary.totalDistance/1000).toFixed(2) + ' km </h2>';
+            infoContainer.innerHTML = '<h2>Distance: ' + (routes[0].summary.totalDistance/1000*0.621371).toFixed(2) + ' miles </h2>';
             //infoContainer.innerHTML += '<br> <br> <h2>Options:</h2>';
 			infoContainer.innerHTML += ' <button type="button" class="dirbutt btn btn-success">Get Directions</button>';
 			infoContainer.innerHTML += ' <br> <button type="button" class="attractbutt btn btn-dark">Show Attractions</button>';

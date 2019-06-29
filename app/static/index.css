@@ -41,7 +41,7 @@ html {
 }
 #land::after{
     content: "";
-    background: url('/static/la2.jpg');
+    background: url('/static/la.jpg');
     background-size: cover;
     top: 0;
     left: 0;
@@ -62,4 +62,13 @@ html {
     -webkit-border-radius: 8px;
        -moz-border-radius: 8px;
             border-radius: 8px;
+}
+
+#land h1{
+    height: auto;
+    position: absolute;
+    display: inline-block;
+    top: 60vh;
+    left: 17vw;
+    font-size: 35px;
 }
