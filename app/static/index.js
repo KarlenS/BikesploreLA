@@ -6,7 +6,7 @@ var L = require('./leaflet'),
     util = require('./util'),
     nearest = require('@turf/nearest'),
     extent = require('turf-extent');
-    gauge = require('gauge-progress')(),
+    //gauge = require('gauge-progress')(),
     distance = require('@turf/distance').default,
     point = require('@turf/helpers').point,
     lineDistance = require('@turf/line-distance'),
@@ -72,17 +72,17 @@ xhr2.onload = function() {
 xhr2.open('GET', 'static/sites.geojson');
 xhr2.send();
 
-gauge.start();
+//gauge.start();
 var xhr = new XMLHttpRequest();
 xhr.addEventListener('progress', function(oEvent) {
-    if (oEvent.lengthComputable) {
-        gauge.progress(oEvent.loaded, oEvent.total);
-    }
+    //if (oEvent.lengthComputable) {
+    //    gauge.progress(oEvent.loaded, oEvent.total);
+    //}
 });
 xhr.onload = function() {
-    gauge.stop();
+    //gauge.stop();
     if (xhr.status === 200) {
-        gauge.progress(100, 100);
+        //gauge.progress(100, 100);
         setTimeout(function() {
             net = JSON.parse(xhr.responseText);
             initialize(net);
@@ -193,10 +193,10 @@ function initialize(network) {
 
 			const mybutton = $(".attractbutt");
 
-			const slidebox = $("#chbox");
-			slidebox.change(function() {
-				alert("BOOOM!")
-			});
+			//const slidebox = $("#chbox");
+			//slidebox.change(function() {
+			//	alert("BOOOM!")
+			//});
 
         	mybutton.on("click", function() {
 
@@ -489,6 +489,6 @@ control = L.Routing.control({});
 
 }
 
-function setStartWaypoint(position) {
-    alert(position.coords.latitude,position.coords.longitude)
-}
+//function setStartWaypoint(position) {
+//    alert(position.coords.latitude,position.coords.longitude)
+//}

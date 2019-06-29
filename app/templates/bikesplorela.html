@@ -28,6 +28,13 @@
 <body>
 
 
+    <div id="land">
+
+        <img src="static/la2.jpg"> </img>
+        <button type="button" class="disbutt btn-lg btn btn-primary">Get Started</button>
+
+    </div>
+
     <div id="sliderbox"> 
         <input type="text" id="ex1" data-slider-id='ex1Slider'
         data-provide="slider" data-slider-ticks="[1, 2, 3]"
@@ -44,5 +51,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <script src"https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/bootstrap-slider.js"></script>
     <script src="static/bundle.js"></script>
+    <script> 
+        $(".disbutt").on("click",function hideLA(){
+            $("#land").css('display','none');
+        });
+    </script>
 </body>
 </html>

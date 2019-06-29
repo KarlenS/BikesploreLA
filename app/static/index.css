@@ -26,6 +26,29 @@ html {
     position: fixed;
     top: 85px;
     right: 100px;
+    z-index: 90;
+    display: inline-block;
+}
+
+#land{
+    position: absolute;
     z-index: 100;
     display: inline-block;
+    width: 100vw;
+}
+#land img {
+    width: 100%;
+    height: auto;
+}
+
+#land button{
+    position: absolute;
+    display: inline-block;
+    top: 40vh;
+    left: 40vw;
+    font-size: 40px;
+        line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
 }
