@@ -173,7 +173,7 @@ function initialize(network) {
                 //infoContainer.innerHTML += '<br/>Time/Distance: ' + (1000*routes[0].summary.totalTime/routes[0].summary.totalDistance).toFixed(2);
                 //infoContainer.innerHTML += '<br/>Average Accident Chance: ' + (routes[0].summary.totalTime/routes[0].coordinates.length).toFixed(2);
                 infoContainer.innerHTML +=
-                    '<p style="font-size: 16pt;"> Ride safe. Have fun. Don\'t die.</p>';
+                    '<p style="font-size: 16pt;"> Ride safe. Explore. Have fun.</p>';
 
                  infoContainer.innerHTML += '<p style="font-size: 12pt; color:red;"> <u>Note</u>: not available east of Beverly Hills.</p>';
             //}

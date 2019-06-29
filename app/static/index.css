@@ -31,14 +31,24 @@ html {
 }
 
 #land{
-    position: absolute;
+    position: relative;
+    height: 100vh;
+    min-height: 500px;
+
+    background-size: cover;
+    background-position: center;
     z-index: 100;
-    display: inline-block;
-    width: 100vw;
 }
-#land img {
-    width: 100%;
-    height: auto;
+#land::after{
+    content: "";
+    background: url('/static/la2.jpg');
+    background-size: cover;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -10;
 }
 
 #land button{
