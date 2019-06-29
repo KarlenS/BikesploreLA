@@ -31,6 +31,7 @@ html {
 }
 
 #land{
+    text-align: center;
     position: relative;
     height: 100vh;
     min-height: 500px;
@@ -52,10 +53,11 @@ html {
 }
 
 #land button{
+    text-align: center;
     height: auto;
     position: absolute;
     display: inline-block;
-    top: 40vh;
+    top: 55vh;
     left: 40vw;
     font-size: 40px;
         line-height: normal;
@@ -65,10 +67,11 @@ html {
 }
 
 #land h1{
+    text-align: center;
     height: auto;
     position: absolute;
     display: inline-block;
-    top: 60vh;
+    top: 70vh;
     left: 17vw;
     font-size: 35px;
 }
