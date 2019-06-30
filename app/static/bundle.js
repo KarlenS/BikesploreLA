@@ -18726,7 +18726,7 @@ xhr2.onload = function() {
     }
 };
 
-xhr2.open('GET', 'static/sites.geojson');
+xhr2.open('GET', 'static/sites2.geojson');
 xhr2.send();
 
 //gauge.start();
@@ -18876,8 +18876,8 @@ function initialize(network) {
                     var title = sites.features[i].properties.title;
 
                     var but = '<button type="button" class="mybutt btn btn-primary">Take me here!!</button>';
-					//'<p/><br><img src="static/Caique.png" style="width:100px;height:100px;"/> <br> '
-                    sites.features[i].properties.popupContent='<p>' + title.split('_').join(' ') + ' </p> <br><br> ' + but;
+					var img = '<img src='+sites.features[i].properties.filepath+' style="width:100px;height:100px;"/> <br> '
+                    sites.features[i].properties.popupContent='<p>' + title.split('_').join(' ') + ' </p>'+ img +'<br>' + but;
                     filtered_features.push(sites.features[i]);
                 }
             }
