@@ -44,7 +44,7 @@ for page in masterlist:
             imlink = imobj.img['src']
             fullimglink = os.path.dirname(imlink)
         except AttributeError:
-            print('FUCKING CARDBOX!!!!')
+            print('CARDBOX!!!!')
             imlink = None
             fullimglink = None
 
