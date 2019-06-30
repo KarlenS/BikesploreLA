@@ -23,8 +23,8 @@ html {
 }
 
 #sliderbox {
-    position: fixed;
-    top: 23vh;
+    position: absolute;
+    top: 135px;
     right: 100px;
     z-index: 90;
     display: inline-block;
