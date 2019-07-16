@@ -51,7 +51,7 @@ L.tileLayer('https://api.mapbox.com/v4/mapbox.outdoors/{z}/{x}/{y}{r}.png?access
 
 // Loading the network from the server with a nice animation
 var net;
-L.alpha = 1;
+L.alpha = 0.99;
 
 
 var sites;
@@ -93,7 +93,7 @@ xhr.onload = function() {
     }
 };
 
-xhr.open('GET', 'static/acc_layer2.geojson');
+xhr.open('GET', 'static/acc_layer_bl.geojson');
 xhr.send();
 
 function filter_sites(a, b, dlim){
@@ -158,7 +158,6 @@ function initialize(network) {
             var infoContainer = document.querySelector('.leaflet-testbox');
             var routes = e.routes;
 
-
             infoContainer.innerHTML = '<h2>Distance: ' + (routes[0].summary.totalDistance/1000*0.621371).toFixed(2) + ' miles </h2>';
             //infoContainer.innerHTML += '<br> <br> <h2>Options:</h2>';
 			infoContainer.innerHTML += ' <button type="button" class="dirbutt btn btn-success">Get Directions</button>';
@@ -169,7 +168,7 @@ function initialize(network) {
 
 
             //if (L.alpha == 1) {
-                //infoContainer.innerHTML += '<br> Total Accident Risk: ' + routes[0].summary.totalTime.toFixed(2);
+             //   infoContainer.innerHTML += '<br> Total Accident Risk: ' + routes[0].summary.totalTime.toFixed(2);
                 //infoContainer.innerHTML += '<br/>Time/Distance: ' + (1000*routes[0].summary.totalTime/routes[0].summary.totalDistance).toFixed(2);
                 //infoContainer.innerHTML += '<br/>Average Accident Chance: ' + (routes[0].summary.totalTime/routes[0].coordinates.length).toFixed(2);
                 infoContainer.innerHTML +=
@@ -331,8 +330,10 @@ function initialize(network) {
     control.setWaypoints([
 		//[position.coords.latitude,position.coords.longitude],
 		//[position.coords.latitude,position.coords.longitude],
-		[34.066666, -118.410673],
-		[34.055582, -118.383475],
+        [33.986735, -118.468115],
+        [34.000329, -118.470223],
+		//[34.066666, -118.410673],
+		//[34.055582, -118.383475],
     ]);
 
 }
