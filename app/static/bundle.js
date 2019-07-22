@@ -18750,7 +18750,7 @@ xhr.onload = function() {
     }
 };
 
-xhr.open('GET', 'static/acc_layer_l.geojson');
+xhr.open('GET', 'static/acc_layer_bl.geojson');
 xhr.send();
 
 function filter_sites(a, b, dlim){
